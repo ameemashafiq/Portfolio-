@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumi Skin Pro | Premium Skincare Store</title>
+    <style>
+        :root {
+            --primary: #0f172a; /* Deep Slate */
+            --accent: #2563eb;  /* Trust Blue */
+            --accent-hover: #1d4ed8;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --success: #16a34a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--white);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 1.5rem;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+        .cart-icon-container {
+            position: relative;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            background-color: var(--accent);
+            color: var(--white);
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* Multi-page View Controller */
+        .page-view {
+            display: none;
+            flex: 1;
+        }
+        .page-view.active-view {
+            display: block;
+        }
+
+        /* Banner/Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; color: #cbd5e1; }
+        .btn-shop {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .btn-shop:hover { background-color: var(--accent-hover); }
+
+        /* Main Store Content Layout */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Product Grid Architecture */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background-color: #f1f5f9;
+            cursor: pointer;
+        }
+        .product-info {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+        .product-title:hover { color: var(--accent); }
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .btn-add-cart {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .btn-add-cart:hover { background-color: #1e293b; }
+
+        /* Single Product Detail Page/Modal Layout */
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .detail-img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .detail-title { font-size: 2.2rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .detail-price { font-size: 1.8rem; font-weight: 700; color: var(--accent); margin-bottom: 1.5rem; }
+        .detail-description { color: var(--text-main); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; }
+        
+        /* Cart Page Architecture */
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        .cart-items-list {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .cart-item:last-child { border-bottom: none; }
+        .cart-item-details h4 { font-weight: 600; color: var(--primary); }
+        .cart-summary-box {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            height: fit-content;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .btn-checkout {
+            width: 100%;
+            background-color: var(--success);
+            color: var(--white);
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        /* Info Pages (About / Contact) */
+        .info-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .info-card p { margin-bottom: 1.2rem; line-height: 1.6; }
+        
+        /* Contact Form */
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        .form-control {
+            width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 1rem;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Platform Header & Navigation Links -->
+    <nav>
+        <div class="nav-container">
+            <div class="brand-logo" onclick="navigateTo('home')">Lumi Skin Pro</div>
+            <div class="nav-links">
+                <a onclick="navigateTo('home')" id="link-home" class="active">Home</a>
+                <a onclick="navigateTo('shop')" id="link-shop">Products</a>
+                <a onclick="navigateTo('about')" id="link-about">About Us</a>
+                <a onclick="navigateTo('contact')" id="link-contact">Contact</a>
+            </div>
+            <div class="cart-icon-container" onclick="navigateTo('cart')">
+                🛒 Cart <span class="cart-badge" id="cart-counter">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. HOME VIEW -->
+    <div id="view-home" class="page-view active-view">
+        <div class="hero">
+            <h1>Advanced Science, Radiant Skin</h1>
+            <p>Formulated variables targeted to optimize, balance, and unlock dynamic cellular hydration.</p>
+            <button class="btn-shop" onclick="navigateTo('shop')">Explore Catalog</button>
+        </div>
+        <div class="container">
+            <h3 class="section-title">Featured Collections</h3>
+            <div class="product-grid" id="featured-products-target"></div>
+        </div>
+    </div>
+
+    <!-- 2. SHOPPING CATALOG VIEW -->
+    <div id="view-shop" class="page-view">
+        <div class="container">
+            <h3 class="section-title">All Formulations</h3>
+            <div class="product-grid" id="all-products-target"></div>
+        </div>
+    </div>
+
+    <!-- 3. SINGLE PRODUCT DETAIL VIEW -->
+    <div id="view-product-detail" class="page-view">
+        <div class="container" id="product-detail-target">
+            <!-- Dynamic Inject -->
+        </div>
+    </div>
+
+    <!-- 4. SHOPPING CART VIEW -->
+    <div id="view-cart" class="page-view">
+        <div class="container">
+            <h3 class="section-title">Your Order Architecture</h3>
+            <div class="cart-layout">
+                <div class="cart-items-list" id="cart-items-target">
+                    <!-- Dynamic Cart Rows -->
+                </div>
+                <div class="cart-summary-box">
+                    <h4 style="margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem;">Cost Analytics</h4>
+                    <div class="summary-row"><span>Subtotal:</span><span id="cart-subtotal">$0.00</span></div>
+                    <div class="summary-row"><span>Shipping:</span><span style="color: var(--success); font-weight: 600;">FREE</span></div>
+                    <div class="summary-row" style="font-weight: 700; font-size: 1.25rem; border-top: 1px solid #e2e8f0; padding-top: 0.75rem;">
+                        <span>Total:</span><span id="cart-total">$0.00</span>
+                    </div>
+                    <button class="btn-checkout" onclick="checkoutSecure()">Proceed to Secure Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ABOUT PAGE VIEW -->
+    <div id="view-about" class="page-view">
+        <div class="container">
+            <h3 class="section-title">Our Philosophy</h3>
+            <div class="info-card">
+                <p>At Lumi Skin Pro, we view skin care layouts as controlled testing parameters. Every serum and cleanser is structurally engineered with verified ingredients designed to deliver clear, predictable, and measurable aesthetic improvements.</p>
+                <p>We source raw ingredients globally, minimizing filler agents to scale the direct performance metrics of your natural dermal barriers.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. CONTACT VIEW -->
+    <div id="view-contact" class="page-view">
+        <div class="container">
+            <h3 class="section-title">Connect Infrastructure</h3>
+            <div class="info-card">
+                <form onsubmit="event.preventDefault(); alert('Message systematically routed. Our team will coordinate a response within 12 hours.');">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Point</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message Scope</label>
+                        <textarea class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button class="btn-shop" type="submit">Deploy Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer System -->
+    <footer>
+        <p>&copy; 2026 Lumi Skin Pro Digital Node. Secure Checkout via Stripe & Payoneer Verified Gateway.</p>
+    </footer>
+
+    <!-- Core Interactive Operational Logic -->
+    <script>
+        // Database Matrix: Product Architecture
+        const PRODUCTS = [
+            { id: 1, name: "Hydro-Infused Matrix Serum", price: 49.00, desc: "Advanced molecular hyaluronic architecture designed to restore baseline cell moisture metrics.", img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80" },
+            { id: 2, name: "Ceramide Barrier Defense Cream", price: 62.00, desc: "High-density lipid barrier deployment designed to shield against cross-border environmental stressors.", img: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=500&q=80" },
+            { id: 3, name: "Alpha-Bright Cellular Cleanser", price: 35.00, desc: "AHA/BHA exfoliation balancing fluid engineered to normalize natural sebum output values.", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80" },
+            { id: 4, name: "Retinol Regeneration Matrix", price: 78.00, desc: "Micro-encapsulated 0.5% pure retinol designed to systematically boost optimal turnover velocities.", img: "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=500&q=80" }
+        ];
+
+        let CART = [];
+
+        // Single-File Navigation Router
+        function navigateTo(viewId) {
+            // Deactivate current views
+            document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active-view'));
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+
+            // Activate new targeted view
+            const targetView = document.getElementById(`view-${viewId}`);
+            if (targetView) targetView.classList.add('active-view');
+
+            const targetLink = document.getElementById(`link-${viewId}`);
+            if (targetLink) targetLink.classList.add('active');
+
+            window.scrollTo(0, 0);
+        }
+
+        // Render Cards Systematically
+        function renderStorefronts() {
+            const featuredTarget = document.getElementById('featured-products-target');
+            const shopTarget = document.getElementById('all-products-target');
+            
+            let featuredHtml = "";
+            let shopHtml = "";
+
+            PRODUCTS.forEach((product, index) => {
+                const cardHtml = `
+                    <div class="product-card">
+                        <img src="${product.img}" class="product-img" onclick="viewProductDetail(${product.id})" alt="${product.name}">
+                        <div class="product-info">
+                            <div class="product-title" onclick="viewProductDetail(${product.id})">${product.name}</div>
+                            <p class="product-desc">${product.desc}</p>
+                            <div class="product-meta">
+                                <span class="product-price">$${product.price.toFixed(2)}</span>
+                                <button class="btn-add-cart" onclick="addToCart(${product.id})">Add To Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                if(index < 2) featuredHtml += cardHtml; // Load first two items as featured
+                shopHtml += cardHtml;
+            });
+
+            featuredTarget.innerHTML = featuredHtml;
+            shopTarget.innerHTML = shopHtml;
+        }
+
+        // Product Detail Page Builder
+        function viewProductDetail(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            const target = document.getElementById('product-detail-target');
+            target.innerHTML = `
+                <div class="product-detail-container">
+                    <div>
+                        <img src="${product.img}" class="detail-img" alt="${product.name}">
+                    </div>
+                    <div>
+                        <h2 class="detail-title">${product.name}</h2>
+                        <div class="detail-price">$${product.price.toFixed(2)}</div>
+                        <p class="detail-description">${product.desc} Formulated with precise laboratory configurations to satisfy daily skin metrics. Non-comedogenic, clinically analyzed, and optimized for global skincare standards.</p>
+                        <button class="btn-shop" style="width:100%; padding:1rem;" onclick="addToCart(${product.id})">Add Formulatory Asset to Cart</button>
+                    </div>
+                </div>
+            `;
+            navigateTo('product-detail');
+        }
+
+        // State Machine: Cart Logic
+        function addToCart(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            const existingItem = CART.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                CART.push({ ...product, quantity: 1 });
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Count badges
+            const count = CART.reduce((acc, item) => acc + item.quantity, 0);
+            document.getElementById('cart-counter').innerText = count;
+
+            // Render Cart list items
+            const listTarget = document.getElementById('cart-items-target');
+            if (CART.length === 0) {
+                listTarget.innerHTML = `<p style="color: var(--text-light); text-align:center; padding: 2rem;">Your cart data pipeline is empty.</p>`;
+            } else {
+                let html = "";
+                CART.forEach(item => {
+                    html += `
+                        <div class="cart-item">
+                            <div class="cart-item-details">
+                                <h4>${item.name}</h4>
+                                <p style="font-size:0.85rem; color: var(--text-light)">Qty: ${item.quantity} &times; $
