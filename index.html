@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ameema Shafiq | Portfolio</title>
+    <style>
+        /* Modern & Premium Professional Color Palette */
+        :root {
+            --primary: #1e293b; /* Deep Slate Navy */
+            --accent: #2563eb;  /* Professional Royal Blue */
+            --text-main: #334155; /* Soft Black */
+            --text-muted: #64748b; /* Slate Gray */
+            --bg-light: #f8fafc; /* Crisp Off-White */
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--primary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: var(--white);
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #0f172a 100%);
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header h1 {
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        header h2 {
+            font-size: 1.4rem;
+            color: #93c5fd;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .tagline {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .cta-btn {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(37,99,235,0.2);
+            transition: background 0.3s;
+        }
+        .cta-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Main Container layout */
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--accent);
+            padding-left: 10px;
+        }
+
+        /* Grid Cards Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1-fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .card-tag {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: var(--accent);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .card ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .card li {
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Metrics Styling */
+        .stat {
+            font-weight: bold;
+            color: #0f172a;
+            background-color: #f1f5f9;
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        /* Toolkit Table & Chips */
+        .skills-container {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .skill-group {
+            margin-bottom: 1.5rem;
+        }
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+        .skill-label {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .chip {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Ameema Shafiq</div>
+            <div class="nav-links">
+                <a href="#projects">Projects</a>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#skills">Skills</a>
+                <a href="#certifications">Certifications</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header>
+        <div class="hero-container">
+            <h1>Ameema Shafiq</h1>
+            <h2>Digital Marketing & E-commerce Specialist</h2>
+            <p class="tagline">"Where scientific analytics and rigorous testing methodologies convert into verifiable digital growth and scalable multi-channel revenue."</p>
+            <a href="mailto:ameemashafiq265@gmail.com" class="cta-btn">Let's Work Together</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- E-commerce Storefront Section -->
+        <section id="projects">
+            <h3>E-commerce Storefront Deployments</h3>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-tag">Shopify Architecture</span>
+                    <div class="card-title">Lumi Skin Pro (International Brand)</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Founder & E-commerce Growth Lead</p>
+                    <ul>
+                        <li>Built end-to-end global skincare asset featuring optimized custom UX navigation.</li>
+                        <li>Configured secure global checkout pathways integrating <span class="stat">Stripe & Payoneer</span>.</li>
+                        <li>Executed ongoing customer flow maps, successfully <span class="stat">slashing cart abandonment by 18%</span>.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="card-tag">Marketplace Sourcing</span>
+                    <div class="card-title">Global eBay Merchant Storefronts</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Operations & Sourcing Consultant</p>
+                    <ul>
+                        <li>Structured highly optimized dropshipping catalogs and strict wholesale pipelines.</li>
+                        <li>Tailored inventory listings directly matching the <span class="stat">eBay Cassini Search Algorithm</span>.</li>
+                        <li>Deployed automated cross-border shipping protocols to defend and scale net profit margins.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Campaign Growth Section -->
+        <section id="case-studies">
+            <h3>Campaign Growth & Data Case Studies</h3>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-tag">Search Marketing</span>
+                    <div class="card-title">SEO Optimization Turnaround</div>
+                    <ul>
+                        <li>Audited a 200+ product catalog using <span class="stat">SEMrush & Ahrefs</span> to clear indexing logic gaps.</li>
+                        <li>Drove a verified <span class="stat">55% surge in monthly organic sessions</span> inside 60 days.</li>
+                        <li>Sustained an average <span class="stat">40% increase in monthly traffic</span> across targeted growth portfolios.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="card-tag">Performance Marketing</span>
+                    <div class="card-title">Gulf Lead Generation Funnels</div>
+                    <ul>
+                        <li>Launched conversion-focused paid social structures via <span class="stat">Meta Ads Manager</span>.</li>
+                        <li>Targeted high-intent consumers across premium UAE and Saudi Arabian market demographics.</li>
+                        <li>Delivered an immediate <span class="stat">30% reduction in Cost-Per-Lead (CPL)</span> within week four.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toolkit Section -->
+        <section id="skills">
+            <h3>Core Technical Toolkit</h3>
+            <div class="skills-container">
+                <div class="skill-group">
+                    <div class="skill-label">E-commerce & Financial Channels</div>
+                    <div class="chips">
+                        <span class="chip">Shopify Architecture</span>
+                        <span class="chip">eBay Store Operations</span>
+                        <span class="chip">Wholesale Sourcing</span>
+                        <span class="chip">Stripe & Payoneer</span>
+                        <span class="chip">Conversion Optimization (CRO)</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Search Strategy & Analytics</div>
+                    <div class="chips">
+                        <span class="chip">Technical SEO</span>
+                        <span class="chip">SEMrush & Ahrefs</span>
+                        <span class="chip">Google Analytics 4 (GA4)</span>
+                        <span class="chip">Looker Studio</span>
+                        <span class="chip">Google Search Console</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Paid Media Acquisition</div>
+                    <div class="chips">
+                        <span class="chip">Meta Ads Manager</span>
+                        <span class="chip">LinkedIn Campaign Manager</span>
+                        <span class="chip">eBay Promoted Listings</span>
+                        <span class="chip">Google Ads</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credentials Section -->
+        <section id="certifications">
+            <h3>Verified Credentials</h3>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+                <div class="card" style="padding: 1.2rem; text-align: center;">
+                    <div class="card-title" style="font-size: 1.05rem;">Dubai Government (1MP)</div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">AI & Digital Growth Strategy</p>
+                </div>
+                <div class="card" style="padding: 1.2rem; text-align: center;">
+                    <div class="card-title" style="font-size: 1.05rem;">HubSpot Academy</div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Digital & Social Media Marketing Professional</p>
+                </div>
+                <div class="card" style="padding: 1.2rem; text-align: center;">
+                    <div class="card-title" style="font-size: 1.05rem;">Google Academy</div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Google Analytics 4 (GA4) Certified</p>
+                </div>
+                <div class="card" style="padding: 1.2rem; text-align: center;">
+                    <div class="card-title" style="font-size: 1.05rem;">Meta Blueprint</div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Certified Social Media Associate</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ameema Shafiq. All Rights Reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #cbd5e1;">
+            Email: ameemashafiq265@gmail.com | LinkedIn: <a href="https://www.linkedin.com/in/ameema-shafiq-865932321" target="_blank">Connect on LinkedIn</a>
+        </p>
+    </footer>
+
+</body>
+</html>
