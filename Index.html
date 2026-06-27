@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumi Skin Pro | Advanced Dermatological Formulations</title>
+    <title>Lumi Skin Pro | Clinical Dermatological Formulations</title>
     <style>
         :root {
             --primary: #0f172a;       /* Deep Luxury Slate */
@@ -11,7 +11,7 @@
             --accent-hover: #1d4ed8;
             --text-main: #1e293b;
             --text-muted: #64748b;
-            --bg-light: #f8fafc;      /* Premium Ultra-Light Gray */
+            --bg-light: #f8fafc;      /* Premium Soft White */
             --white: #ffffff;
             --success: #10b981;       /* Clean Green */
             --border: #e2e8f0;
@@ -34,19 +34,19 @@
             min-height: 100vh;
         }
 
-        /* Top Announcement Bar */
+        /* Announcement Bar */
         .announcement-bar {
             background-color: var(--primary);
             color: var(--white);
             text-align: center;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1rem;
             font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* Navigation Framework */
+        /* Professional Header Framework */
         nav {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -55,7 +55,6 @@
             top: 0;
             z-index: 1000;
             padding: 1.25rem 2rem;
-            transition: all 0.3s ease;
         }
         .nav-container {
             max-width: 1280px;
@@ -71,9 +70,6 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
         .brand-logo span {
             color: var(--accent);
@@ -88,7 +84,7 @@
             font-weight: 500;
             font-size: 0.95rem;
             cursor: pointer;
-            transition: color 0.2s ease, transform 0.2s ease;
+            transition: color 0.2s ease;
             position: relative;
             padding: 0.25rem 0;
         }
@@ -135,7 +131,7 @@
             font-weight: 700;
         }
 
-        /* Page View Switcher */
+        /* View Animation Layer */
         .page-view {
             display: none;
             flex: 1;
@@ -146,16 +142,14 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
+            from { opacity: 0; transform: translateY(4px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Luxury Hero Dashboard Section */
+        /* Premium Brand Hero Section */
         .hero {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 8rem 2rem;
-            position: relative;
-            overflow: hidden;
+            padding: 6rem 2rem;
             border-bottom: 1px solid var(--border);
         }
         .hero-container {
@@ -165,9 +159,6 @@
             grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: 4rem;
-        }
-        .hero-content {
-            text-align: left;
         }
         .hero-badge {
             display: inline-block;
@@ -182,14 +173,14 @@
             margin-bottom: 1.5rem;
         }
         .hero h1 { 
-            font-size: 3.5rem; 
+            font-size: 3.2rem; 
             line-height: 1.1; 
             margin-bottom: 1.5rem; 
             color: var(--primary);
             font-weight: 800;
         }
         .hero p { 
-            font-size: 1.15rem; 
+            font-size: 1.1rem; 
             margin-bottom: 2.5rem; 
             color: var(--text-muted); 
             line-height: 1.6;
@@ -209,14 +200,13 @@
         .btn-primary:hover { 
             background-color: var(--accent-hover); 
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
         }
         .hero-visual img {
             width: 100%;
-            height: 450px;
+            height: 400px;
             object-fit: cover;
             border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
         }
 
         /* Layout Framework */
@@ -237,10 +227,9 @@
             font-size: 1.75rem;
             color: var(--primary);
             font-weight: 700;
-            letter-spacing: -0.5px;
         }
 
-        /* Advanced Enterprise Product Grid */
+        /* Product Cards Structure */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -253,11 +242,11 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             position: relative;
         }
         .product-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow);
             border-color: #cbd5e1;
         }
@@ -268,7 +257,7 @@
             background-color: var(--primary);
             color: var(--white);
             padding: 0.3rem 0.75rem;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             border-radius: 4px;
             text-transform: uppercase;
@@ -279,17 +268,16 @@
             width: 100%;
             height: 280px;
             overflow: hidden;
-            background-color: #f1f5f9;
         }
         .product-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             cursor: pointer;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
         }
         .product-card:hover .product-img {
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
         .product-info {
             padding: 1.5rem;
@@ -298,16 +286,15 @@
             flex: 1;
         }
         .product-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 0.5rem;
             cursor: pointer;
-            transition: color 0.2s;
         }
         .product-title:hover { color: var(--accent); }
         .product-desc {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
             line-height: 1.5;
@@ -322,7 +309,7 @@
             padding-top: 1rem;
         }
         .product-price {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary);
         }
@@ -340,10 +327,9 @@
         .btn-add-cart:hover { 
             background-color: var(--primary); 
             color: var(--white);
-            border-color: var(--primary);
         }
 
-        /* Product Detail Layout */
+        /* Product Detail Tab Layout */
         .product-detail-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -356,36 +342,32 @@
         }
         .detail-img {
             width: 100%;
-            height: 520px;
+            height: 480px;
             object-fit: cover;
             border-radius: 8px;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
         }
         .detail-category {
             font-size: 0.85rem;
             text-transform: uppercase;
             font-weight: 700;
             color: var(--accent);
-            letter-spacing: 1px;
             margin-bottom: 0.5rem;
         }
-        .detail-title { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; font-weight: 800; }
-        .detail-price { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 2rem; }
-        .detail-description { color: #475569; font-size: 1.05rem; line-height: 1.7; margin-bottom: 2.5rem; }
+        .detail-title { font-size: 2.2rem; color: var(--primary); margin-bottom: 1rem; font-weight: 800; }
+        .detail-price { font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-bottom: 2rem; }
+        .detail-description { color: #475569; font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem; }
         
-        /* Modern Cart Layout */
+        /* Interactive Shopping Cart Layout */
         .cart-layout {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 3rem;
-            align-items: start;
         }
         .cart-items-list {
             background: var(--white);
             padding: 2rem;
             border-radius: 10px;
             border: 1px solid var(--border);
-            box-shadow: var(--shadow);
         }
         .cart-item {
             display: flex;
@@ -396,30 +378,25 @@
         }
         .cart-item:last-child { border-bottom: none; }
         .cart-item-thumb {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             object-fit: cover;
             border-radius: 6px;
-            background: var(--bg-light);
         }
         .cart-item-details { flex: 1; }
-        .cart-item-details h4 { font-weight: 600; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.25rem; }
-        .cart-item-price { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+        .cart-item-details h4 { font-weight: 600; color: var(--primary); }
         .cart-summary-box {
             background: var(--white);
             padding: 2rem;
             border-radius: 10px;
             border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 120px;
+            height: fit-content;
         }
         .summary-row {
             display: flex;
             justify-content: space-between;
             margin-bottom: 1.25rem;
             font-size: 1rem;
-            color: var(--text-muted);
         }
         .btn-checkout {
             width: 100%;
@@ -432,29 +409,22 @@
             font-weight: 600;
             cursor: pointer;
             margin-top: 1.5rem;
-            transition: background 0.2s;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
         }
-        .btn-checkout:hover { background-color: #1e293b; }
 
-        /* Corporate Forms & Info Framework */
+        /* Corporate Corporate Info Framework */
         .info-card {
             background: var(--white);
-            padding: 4rem;
+            padding: 3.5rem;
             border-radius: 12px;
             border: 1px solid var(--border);
-            box-shadow: var(--shadow);
             max-width: 750px;
             margin: 0 auto;
         }
-        .info-card p { margin-bottom: 1.5rem; line-height: 1.7; font-size: 1.05rem; color: #475569; }
+        .info-card p { margin-bottom: 1.5rem; line-height: 1.7; color: #475569; }
         .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
         .form-control {
-            width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; transition: border-color 0.2s; background: var(--bg-light);
-        }
-        .form-control:focus {
-            outline: none; border-color: var(--accent); background: var(--white);
+            width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; background: var(--bg-light);
         }
 
         /* Premium Enterprise Footer */
@@ -463,8 +433,6 @@
             color: #94a3b8;
             padding: 4rem 2rem;
             margin-top: auto;
-            border-top: 1px solid #1e293b;
-            font-size: 0.9rem;
         }
         .footer-container {
             max-width: 1280px;
@@ -472,48 +440,43 @@
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 4rem;
-            text-align: left;
-            margin-bottom: 3rem;
         }
-        .footer-brand h4 { color: var(--white); font-size: 1.25rem; margin-bottom: 1rem; text-transform: uppercase; }
-        .footer-links h5 { color: var(--white); font-size: 0.95rem; margin-bottom: 1.25rem; text-transform: uppercase; }
+        .footer-brand h4 { color: var(--white); font-size: 1.2rem; margin-bottom: 1rem; }
+        .footer-links h5 { color: var(--white); font-size: 0.9rem; margin-bottom: 1rem; text-transform: uppercase; }
         .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 0.75rem; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: color 0.2s; cursor: pointer; }
+        .footer-links li { margin-bottom: 0.5rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; cursor: pointer; }
         .footer-links a:hover { color: var(--white); }
         .footer-bottom {
             max-width: 1280px;
-            margin: 0 auto;
+            margin: 2rem auto 0 auto;
             border-top: 1px solid #1e293b;
             padding-top: 2rem;
             display: flex;
             justify-content: space-between;
-            color: #64748b;
             font-size: 0.8rem;
         }
 
-        /* Responsive Breakpoints */
         @media (max-width: 968px) {
             .hero-container, .product-detail-container, .cart-layout { grid-template-columns: 1fr; gap: 3rem; }
             .hero { padding: 4rem 1rem; text-align: center; }
-            .hero-content { text-align: center; }
-            .hero h1 { font-size: 2.5rem; }
+            .hero-visual img { height: 300px; }
             .footer-container { grid-template-columns: 1fr; gap: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="announcement-bar">Complimentary Global Priority Shipping on All Corporate Accounts</div>
+    <div class="announcement-bar">Complimentary Premium Courier Shipping Worldwide</div>
 
-    <!-- Live Corporate Navigation Node -->
+    <!-- Live Navigation Node -->
     <nav>
         <div class="nav-container">
             <div class="brand-logo" onclick="navigateTo('home')">LUMI SKIN<span>PRO</span></div>
             <div class="nav-links">
-                <a onclick="navigateTo('home')" id="link-home" class="active">Home Platform</a>
+                <a onclick="navigateTo('home')" id="link-home" class="active">Home</a>
                 <a onclick="navigateTo('shop')" id="link-shop">Formulations</a>
-                <a onclick="navigateTo('about')" id="link-about">Corporate Profile</a>
+                <a onclick="navigateTo('about')" id="link-about">Our Profile</a>
                 <a onclick="navigateTo('contact')" id="link-contact">Inquiries</a>
             </div>
             <div class="cart-icon-container" onclick="navigateTo('cart')">
@@ -522,25 +485,25 @@
         </div>
     </nav>
 
-    <!-- 1. ENTERPRISE HOME VIEW -->
+    <!-- 1. HOME VIEW -->
     <div id="view-home" class="page-view active-view">
         <div class="hero">
             <div class="hero-container">
-                <div class="hero-content">
-                    <span class="hero-badge">Clinical Clinical Excellence</span>
-                    <h1>Next-Gen Dermal Architecture.</h1>
-                    <p>We configure highly advanced skincare formulations designed to align structural cell metrics and accelerate natural dermal barrier recovery.</p>
-                    <button class="btn-primary" onclick="navigateTo('shop')">View Formulations</button>
+                <div>
+                    <span class="hero-badge">Clinical Dermatology</span>
+                    <h1>Scientific Care, Radiant Skin.</h1>
+                    <p>We configure advanced skincare assets targeting skin barriers to balance metrics and accelerate dermal regeneration efficiently.</p>
+                    <button class="btn-primary" onclick="navigateTo('shop')">Explore Catalogue</button>
                 </div>
                 <div class="hero-visual">
-                    <img src="https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&w=800&q=80" alt="Lumi Skin Pro Core Compound">
+                    <img src="https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&w=800&q=80" alt="Lumi Skin Compound">
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="section-header">
-                <h3 class="section-title">Core Active Deployments</h3>
-                <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500; cursor: pointer;" onclick="navigateTo('shop')">View Full Catalog ➔</span>
+                <h3 class="section-title">Core Dynamic Configurations</h3>
+                <span style="color: var(--text-muted); font-size: 0.9rem; cursor: pointer;" onclick="navigateTo('shop')">View Full Catalog ➔</span>
             </div>
             <div class="product-grid" id="featured-products-target"></div>
         </div>
@@ -550,14 +513,14 @@
     <div id="view-shop" class="page-view">
         <div class="container">
             <div class="section-header">
-                <h3 class="section-title">Laboratory Inventory Matrix</h3>
-                <span style="color: var(--text-muted); font-size: 0.9rem;">Showing 4 Certified Configurations</span>
+                <h3 class="section-title">Complete Inventory Matrix</h3>
+                <span style="color: var(--text-muted); font-size: 0.9rem;">4 Active Formulations</span>
             </div>
             <div class="product-grid" id="all-products-target"></div>
         </div>
     </div>
 
-    <!-- 3. DETAILED PRODUCT COMPONENT VIEW -->
+    <!-- 3. SINGLE PRODUCT DETAIL VIEW -->
     <div id="view-product-detail" class="page-view">
         <div class="container" id="product-detail-target">
             <!-- Programmatic Inject -->
@@ -572,9 +535,37 @@
             </div>
             <div class="cart-layout">
                 <div class="cart-items-list" id="cart-items-target">
-                    <!-- Programmatic Rows -->
+                    <!-- Dynamic Rows -->
                 </div>
                 <div class="cart-summary-box">
-                    <h4 style="font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5rem; color: var(--primary);">Financial Ledger</h4>
-                    <div class="summary-row"><span>Subtotal Architecture:</span><span id="cart-subtotal">$0.00</span></div>
-     
+                    <h4 style="font-weight: 700; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 1.5rem;">Cost Statement</h4>
+                    <div class="summary-row"><span style="color:var(--text-muted)">Subtotal:</span><span id="cart-subtotal">$0.00</span></div>
+                    <div class="summary-row"><span style="color:var(--text-muted)">Shipping Cost:</span><span style="color: var(--success); font-weight: 600;">FREE</span></div>
+                    <div class="summary-row" style="font-weight: 700; font-size: 1.3rem; border-top: 1px solid var(--border); padding-top: 1.25rem;">
+                        <span>Total Checkout:</span><span id="cart-total">$0.00</span>
+                    </div>
+                    <button class="btn-checkout" onclick="executeCheckout()">Proceed to Secure Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. CORPORATE PROFILE (ABOUT) VIEW -->
+    <div id="view-about" class="page-view">
+        <div class="container">
+            <div class="section-header"><h3 class="section-title">Clinical Background</h3></div>
+            <div class="info-card">
+                <p>Lumi Skin Pro creates standard treatments utilizing molecularly optimized chemical profiles. Every compound undergoes strict validation parameters to ensure safe distribution across diverse demographics.</p>
+                <p>We focus on eliminating redundant fillers to accelerate standard asset penetration rates, maximizing aesthetic values safely.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. INQUIRY COMMUNICATIONS VIEW -->
+    <div id="view-contact" class="page-view">
+        <div class="container">
+            <div class="section-header"><h3 class="section-title">Inquiry Center</h3></div>
+            <div class="info-card">
+                <form onsubmit="event.preventDefault(); alert('Message successfully routed to our secure logs. An agent will follow up inside 12 operational hours.');">
+                    <div class="form-group">
+                        
